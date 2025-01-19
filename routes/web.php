@@ -39,7 +39,7 @@ Route::get('/manage-product', function () {
 Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
 
 Route::get('/products', [ProductController::class, 'index']);
-
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/products/{product_id}', [ProductController::class, 'show'])->name('products.show'); // Show single product
 
 Route::get('admin//products/{product_id}', [ProductController::class, 'show'])->name('admin.products.show'); // Show single product

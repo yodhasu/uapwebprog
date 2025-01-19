@@ -42,5 +42,24 @@ class ProductController extends Controller
         $product = Product::findOrFail($product_id); // Retrieve a single product by its ID
         return view('products.show', compact('product'));
     }
+    public function search(Request $request)
+    {
+        // Get the product_name from the request
+        $productName = $request->input('name');
+
+        // Search for the first product by name
+        $product = Product::where('name', 'like', '%' . $productName . '%')->first();
+
+        // If a product is found, redirect to its details page
+        if ($product) {
+            return redirect()->route('products.show', ['product_id' => $product->product_id]);
+        } else {
+            // If no product is found, set a session message
+            session()->flash('warning', 'No products found matching your search.');
+
+            // Redirect back to the product list page
+            return redirect()->route('home');
+        }
+    }
 
 }
