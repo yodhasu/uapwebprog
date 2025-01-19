@@ -92,8 +92,6 @@ class CartController extends Controller
             session()->forget('cart');
     
             return redirect('/cart')->with('success', 'Payment successful! Your wallet has been charged.');
-        } else {
-            return view('cart.index')->with('error', 'Insufficient wallet balance.');
         }
 
         if ($wallet->balance >= $total) {

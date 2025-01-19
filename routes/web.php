@@ -10,7 +10,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\WalletController;
 
 Route::get('/', function () {
-    return redirect('/dashboard/home');
+    // return redirect('/dashboard/home');
+    return view('welcome');
 });
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
